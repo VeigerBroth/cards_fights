@@ -74,7 +74,6 @@ def add_cards_from_deck_to_hand(hand, deck, t):
         deck.remove(deck[0])
         
 def add_cards_from_hand_to_field(field_str, field_name, hand):
-    for i in range(1):
         field_str.append(hand[0])
         field_name.append(hand[0])
         hand.remove(hand[0])
@@ -99,7 +98,6 @@ hand_pOne = []
 hand_pTwo = []
 number_to_guess = randint(1, 10)
 clear_terminal()
-
 
 start_value = enter_value('Choose number from 1 to 3.\n1 - play with PC; 2 - play with other player; 3 - quit game. ',
 'Incorrect value - choose only numbers from 1 to 3.', int, 3, 0)

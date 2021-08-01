@@ -20,7 +20,8 @@ def enter_value(input_message, error_message, input_type_convertion,
     
 def start_minigame():
     start_game = None
-    print('To know, who start - you or your enemy - you will play to guess a number from 1 to 10.')
+    print('To know, who start - you or your enemy -' 
+    +'you will play to guess a number from 1 to 10.')
     
     for i in range(start_value):
         guess_value = enter_value(f'Player {i+1} guess a number: ',
@@ -78,6 +79,67 @@ def add_cards_from_hand_to_field(field_str, field_name, hand):
         field_name.append(hand[0])
         hand.remove(hand[0])
         
+def player_field(field_card_name, field_card_str):
+    print(('-'*13+' ')*(len(field_card_name)))
+
+    for i in range(len(field_card_name)):
+        if field_card_name[i]=='11':
+            print('-'+'Jack'.center(11)+'- ', end='')
+        elif field_card_name[i]=='12':
+            print('-'+'Queen'.center(11)+'- ', end='')
+        elif field_card_name[i]=='13':
+            print('-'+'King'.center(11)+'- ', end='')
+        elif field_card_name[i]=='14':
+            print('-'+'Ace'.center(11)+'- ', end='')
+        elif field_card_name[i]=='15':
+            print('-'+'Joker'.center(11)+'- ', end='')
+        else:    
+            print('-'+field_card_name[i].center(11)+'- ', end='')
+
+    print('\n'+('-'+' '*11+'- ')*(len(field_card_name)))
+    print(('-'+'Strenght:'.center(11)+'- ')*(len(field_card_name)))
+
+    for i in range(len(field_card_str)):
+        print('-'+field_card_str[i].center(11)+'- ', end='')
+
+    print('\n'+('-'+' '*11+'- ')*(len(field_card_name)))
+    print(('-'*13+' ')*(len(field_card_name)))
+    
+def show_cards_in_hand(hand):
+    name = None
+    if start_player == 0 and start_value == 2:
+        name = 'Player 2'
+    elif start_player == 1 and start_value == 2:
+        name = 'Player 1'
+    elif start_player == 1 and start_value == 1:
+        name = 'Player'
+    print(f'\n\nCards in your hand - {name}')
+    
+    print(('-'*13+' ')*(len(hand)))
+
+    for i in range(len(hand)):
+        if hand[i]=='11':
+            print('-'+'Jack'.center(11)+'- ', end='')
+        elif hand[i]=='12':
+            print('-'+'Queen'.center(11)+'- ', end='')
+        elif hand[i]=='13':
+            print('-'+'King'.center(11)+'- ', end='')
+        elif hand[i]=='14':
+            print('-'+'Ace'.center(11)+'- ', end='')
+        elif hand[i]=='15':
+            print('-'+'Joker'.center(11)+'- ', end='')
+        else:    
+            print('-'+hand[i].center(11)+'- ', end='')
+
+    print('\n'+('-'+' '*11+'- ')*(len(hand)))
+    print(('-'+'Strenght:'.center(11)+'- ')*(len(hand)))
+
+    for i in range(len(hand)):
+        print('-'+hand[i].center(11)+'- ', end='')
+
+    print('\n'+('-'+' '*11+'- ')*(len(hand)))
+    print(('-'*13+' ')*(len(hand)))
+        
 
 # Temporary function to clear terminal
 def clear_terminal():
@@ -99,12 +161,13 @@ hand_pTwo = []
 number_to_guess = randint(1, 10)
 clear_terminal()
 
-start_value = enter_value('Choose number from 1 to 3.\n1 - play with PC; 2 - play with other player; 3 - quit game. ',
+
+start_value = enter_value('Choose number from 1 to 3.\n1 -'+
+ ' play with PC; 2 - play with other player; 3 - quit game. ',
 'Incorrect value - choose only numbers from 1 to 3.', int, 3, 0)
 
 if start_value==1 or start_value==2:
     start_player = start_minigame()
-
 elif start_value==3:
     print('Game exit...')
     quit()

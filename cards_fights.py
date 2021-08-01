@@ -67,13 +67,25 @@ def pc_start_guess_number(player_number):
         return pc_guess_number
     else:
         return pc_start_guess_number(player_number)
+      
+def add_cards_from_deck_to_hand(hand, deck, t):
+    for i in range(t):
+        hand.append(deck[0])
+        deck.remove(deck[0])
+        
+def add_cards_from_hand_to_field(field_str, field_name, hand):
+    for i in range(1):
+        field_str.append(hand[0])
+        field_name.append(hand[0])
+        hand.remove(hand[0])
+        
 
 # Temporary function to clear terminal
 def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 cards_basic = ['2', '3', '4', '5', '6', '7', '8', '9', 
-               '10', 'Jack', 'Queen', 'King', 'Ace', 'Joker']
+               '10', '11', '12', '13', '14', '15']
                
 deck_pOne = []+cards_basic*4
 deck_pTwo = []+cards_basic*4
@@ -81,6 +93,10 @@ shuffle(deck_pOne)
 shuffle(deck_pTwo)
 field_pOne = []
 field_pTwo = []
+field_card_name_pOne = []
+field_card_name_pTwo = []
+hand_pOne = []
+hand_pTwo = []
 number_to_guess = randint(1, 10)
 clear_terminal()
 

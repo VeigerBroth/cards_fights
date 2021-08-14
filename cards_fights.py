@@ -18,8 +18,7 @@ def enter_value(input_message, error_message, input_type_convertion,
             
     return enter_value
     
-def start_minigame():
-    global start_game
+def start_minigame(start_value):
     start_game=None
     print('To know, who start - you or your enemy -' 
     +' you will play to guess a number from 1 to 10.')
@@ -33,7 +32,7 @@ def start_minigame():
             guess_value_first = guess_value
         elif i==1 and guess_value_first==guess_value:
             print('Enter value cant be the same - choose again!')
-            start_minigame()
+            return start_minigame(start_value)
             
     if start_value==2:
         result_first = abs(guess_value_first - number_to_guess)
@@ -211,7 +210,7 @@ start_value = enter_value('Choose number from 1 to 3.\n1 -'+
 
 if start_value==1 or start_value==2:
     
-    start_player = start_minigame()
+    start_player = start_minigame(start_value)
     
     add_cards_from_deck_to_hand(hand_pOne, deck_pOne, 1)
     add_cards_from_deck_to_hand(hand_pTwo, deck_pTwo, 1)

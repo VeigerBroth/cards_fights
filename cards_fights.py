@@ -215,83 +215,106 @@ if start_value==1 or start_value==2:
     add_cards_from_deck_to_hand(hand_pOne, deck_pOne, 1)
     add_cards_from_deck_to_hand(hand_pTwo, deck_pTwo, 1)
     
-    if start_value==2:
-        while( (len(deck_pOne) or len(hand_pOne) or len(field_card_name_pOne)) != 0 and
-               (len(deck_pTwo) or len(hand_pTwo) or len(field_card_name_pTwo)) != 0):
-                   
-            if start_player==1:
-                print(f'Cards in your deck Player 1: {len(deck_pOne)}\n')
-
-                if moves>=1:
-                    print('Cards in your enemy field:')
-                    show_card_in_field(field_card_name_pTwo, field_pTwo)
-                    
-                if (moves>1 and len(field_pOne)>0):
-                    print('Cards in your field - Player 1:')
-                    show_card_in_field(field_card_name_pOne, field_pOne)
-                    
-                if (len(deck_pOne)!=0 and len(hand_pOne)<=4):  
-                    add_cards_from_deck_to_hand(hand_pOne, deck_pOne, 1)
-                
-                if len(hand_pOne)!=0:
-                    show_cards_in_hand(hand_pOne)
-                
-                if (len(field_card_name_pOne)<=4 and len(hand_pOne)!=0):
-                    choosen_card = choose_card_to_field(hand_pOne)
-                    add_cards_from_hand_to_field(field_card_name_pOne, field_pOne, hand_pOne, choosen_card)
-                 
-                clear_terminal()
-
-                if moves>1:
-                    print('Cards in your enemy field:')
-                    show_card_in_field(field_card_name_pTwo, field_pTwo)
-                    print('Cards in your field - Player 1:')
-                    show_card_in_field(field_card_name_pOne, field_pOne)
-                    
-                    choose_card_to_attack(field_pOne, field_pTwo, field_card_name_pTwo)
-                    
-                
-                start_player-=1 # -1 to 0 for move p2
-                moves+=1
-                
-            elif start_player==0:
-                print(f'Cards in your deck Player 2: {len(deck_pTwo)}\n')
-
-                if moves>=1:
-                    print('Cards in your enemy field:')
-                    show_card_in_field(field_card_name_pOne, field_pOne)
-                    
-                if (moves>1 and len(field_pTwo)>0):
-                    print('Cards in your field - Player 2:')
-                    show_card_in_field(field_card_name_pTwo, field_pTwo)
+    while( (len(deck_pOne) or len(hand_pOne) or len(field_card_name_pOne)) != 0 and
+           (len(deck_pTwo) or len(hand_pTwo) or len(field_card_name_pTwo)) != 0):
                
-                if (len(deck_pTwo)!=0 and len(hand_pTwo)<=4):               
-                    add_cards_from_deck_to_hand(hand_pTwo, deck_pTwo, 1)
-                    
-                if len(hand_pTwo)!=0:
-                    show_cards_in_hand(hand_pTwo)
-                
-                if (len(field_card_name_pTwo)<=4 and len(hand_pTwo)!=0):
-                    choosen_card = choose_card_to_field(hand_pTwo)
-                    add_cards_from_hand_to_field(field_card_name_pTwo, field_pTwo, hand_pTwo, choosen_card)
-                    
-                clear_terminal()
+        if (start_value==2 or start_value==1) and start_player==1:
+            print(f'Cards in your deck Player 1: {len(deck_pOne)}\n')
 
-                if moves>1:
-                    print('Cards in your enemy field')
-                    show_card_in_field(field_card_name_pOne, field_pOne)
-                    print('Cards in your field - Player 2:')
-                    show_card_in_field(field_card_name_pTwo, field_pTwo)
-                    
-                    choose_card_to_attack(field_pTwo, field_pOne, field_card_name_pOne)               
+            if moves>=1:
+                print('Cards in your enemy field:')
+                show_card_in_field(field_card_name_pTwo, field_pTwo)
                 
-                start_player+=1 # +1 to 1 for move p1
-                moves+=1
+            if (moves>1 and len(field_pOne)>0):
+                print('Cards in your field - Player 1:')
+                show_card_in_field(field_card_name_pOne, field_pOne)
+                
+            if (len(deck_pOne)!=0 and len(hand_pOne)<=4):  
+                add_cards_from_deck_to_hand(hand_pOne, deck_pOne, 1)
+            
+            if len(hand_pOne)!=0:
+                show_cards_in_hand(hand_pOne)
+            
+            if (len(field_card_name_pOne)<=4 and len(hand_pOne)!=0):
+                choosen_card = choose_card_to_field(hand_pOne)
+                add_cards_from_hand_to_field(field_card_name_pOne, field_pOne, hand_pOne, choosen_card)
+             
+            clear_terminal()
 
-        if len(deck_pOne) == 0 and len(hand_pOne) == 0 and len(field_card_name_pOne) == 0:
-            print('Winner is Player 2')
-        elif len(deck_pTwo) == 0 and len(hand_pTwo) == 0 and len(field_card_name_pTwo) == 0:
-            print('Winner is Player 1')
+            if moves>1:
+                print('Cards in your enemy field:')
+                show_card_in_field(field_card_name_pTwo, field_pTwo)
+                print('Cards in your field - Player 1:')
+                show_card_in_field(field_card_name_pOne, field_pOne)
+                
+                choose_card_to_attack(field_pOne, field_pTwo, field_card_name_pTwo)
+                
+            
+            start_player-=1 # -1 to 0 for move p2
+            moves+=1
+            
+        elif start_player==0 and start_value==2:
+            print(f'Cards in your deck Player 2: {len(deck_pTwo)}\n')
+
+            if moves>=1:
+                print('Cards in your enemy field:')
+                show_card_in_field(field_card_name_pOne, field_pOne)
+                
+            if (moves>1 and len(field_pTwo)>0):
+                print('Cards in your field - Player 2:')
+                show_card_in_field(field_card_name_pTwo, field_pTwo)
+           
+            if (len(deck_pTwo)!=0 and len(hand_pTwo)<=4):               
+                add_cards_from_deck_to_hand(hand_pTwo, deck_pTwo, 1)
+                
+            if len(hand_pTwo)!=0:
+                show_cards_in_hand(hand_pTwo)
+            
+            if (len(field_card_name_pTwo)<=4 and len(hand_pTwo)!=0):
+                choosen_card = choose_card_to_field(hand_pTwo)
+                add_cards_from_hand_to_field(field_card_name_pTwo, field_pTwo, hand_pTwo, choosen_card)
+                
+            #clear_terminal()
+
+            if moves>1:
+                print('Cards in your enemy field')
+                show_card_in_field(field_card_name_pOne, field_pOne)
+                print('Cards in your field - Player 2:')
+                show_card_in_field(field_card_name_pTwo, field_pTwo)
+                
+                choose_card_to_attack(field_pTwo, field_pOne, field_card_name_pOne)
+                
+            start_player+=1 # +1 to 1 for move p1
+            moves+=1
+            
+        elif start_value==1 and start_player==0:
+            print('PC move!')
+            if (len(deck_pTwo)!=0 and len(hand_pTwo)<=4):               
+                add_cards_from_deck_to_hand(hand_pTwo, deck_pTwo, 1)
+                
+            if (len(field_card_name_pTwo)<=4 and len(hand_pTwo)!=0):  
+                add_cards_from_hand_to_field(field_card_name_pTwo, field_pTwo, hand_pTwo, hand_pTwo.index(max(hand_pTwo))+1)
+            
+            if moves>1:
+                attacked_card = field_pOne.index(max(field_pOne))   
+                field_pOne[attacked_card]-=field_pTwo[field_pTwo.index(max(field_pTwo))]
+                if field_pOne[attacked_card] <= 0:
+                    field_pOne.remove(field_pOne[attacked_card])
+                    field_card_name_pOne.remove(field_card_name_pOne[attacked_card])
+                
+            start_player+=1 # +1 to 1 for move p1
+            moves+=1
+
+    if len(deck_pOne) == 0 and len(hand_pOne) == 0 and len(field_card_name_pOne) == 0:
+        if start_value==2:
+            print('Winner is Player 2!')
+        elif start_value==1:
+            print('Winner is PC!')
+    elif len(deck_pTwo) == 0 and len(hand_pTwo) == 0 and len(field_card_name_pTwo) == 0:
+        if start_value==2:
+            print('Winner is Player 1!')
+        elif start_value==1:
+            print('Winner is Player!')
         
 elif start_value==3:
     print('Game exit...')

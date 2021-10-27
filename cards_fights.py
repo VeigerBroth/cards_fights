@@ -188,12 +188,11 @@ def clear_terminal():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 cards_basic = [2, 3, 4, 5, 6, 7, 8, 9, 
-               10, 11, 12, 13, 14, 15]
-   
-deck_pOne = []+cards_basic
-deck_pTwo = []+cards_basic
-shuffle(deck_pOne)
-shuffle(deck_pTwo)
+               10, 11, 12, 13, 14, 15]*2
+
+shuffle(cards_basic)
+deck_pOne = []
+deck_pTwo = []
 field_pOne = []
 field_pTwo = []
 field_card_name_pOne = []
@@ -203,6 +202,13 @@ hand_pTwo = []
 number_to_guess = randint(1, 10)
 clear_terminal()
 moves = 0
+
+while (len(cards_basic) > 0):
+    deck_pOne.append(cards_basic[0])
+    cards_basic.remove(cards_basic[0])
+    deck_pTwo.append(cards_basic[0])
+    cards_basic.remove(cards_basic[0])
+
 
 start_value = enter_value('Choose number from 1 to 3.\n1 -'+
  ' play with PC; 2 - play with other player; 3 - quit game. ',

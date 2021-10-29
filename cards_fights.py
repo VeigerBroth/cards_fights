@@ -22,7 +22,8 @@ def start_minigame(start_value):
     start_game=None
     print('To know, who start - you or your enemy -' 
     +' you will play to guess a number from 1 to 10.')
-    
+    number_to_guess = randint(1, 10)
+
     for i in range(start_value):
         guess_value = enter_value(f'Player {i+1} guess a number: ',
         'Incorrect value - choose only numbers from 1 to 10.', int, 10, 0)
@@ -50,6 +51,11 @@ def start_minigame(start_value):
             print('Second player start the game!')
             # Win second player
             start_game = 0
+        
+        elif result_first == result_second:
+            print('Both players numbers have the same distant from '+
+                  'random number - try again!')
+            return start_minigame(start_value)
 
             
     elif start_value==1:
@@ -199,7 +205,6 @@ field_card_name_pOne = []
 field_card_name_pTwo = []
 hand_pOne = []
 hand_pTwo = []
-number_to_guess = randint(1, 10)
 clear_terminal()
 moves = 0
 
@@ -215,7 +220,6 @@ start_value = enter_value('Choose number from 1 to 3.\n1 -'+
 'Incorrect value - choose only numbers from 1 to 3.', int, 3, 0)
 
 if start_value==1 or start_value==2:
-    
     start_player = start_minigame(start_value)
     
     add_cards_from_deck_to_hand(hand_pOne, deck_pOne, 1)
